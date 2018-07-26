@@ -1,5 +1,7 @@
 package com.drkiettran.service;
 
+import java.lang.management.ManagementFactory;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,6 +23,6 @@ public class ServiceApplication {
 
 	@RequestMapping("/")
 	public String message() {
-		return "Hello from " + instance;
+		return "Hello from instance " + instance + " process id " + ManagementFactory.getRuntimeMXBean().getName();
 	}
 }
