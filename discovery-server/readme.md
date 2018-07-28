@@ -71,6 +71,15 @@ services/discovery-server-1-8pfk4
 
 ```
 
+## Swagger UI
+
+Use this two links to examine the REST API:
+
+```
+http://localhost:8761/v2/api-docs
+http://localhost:8761/swagger-ui.html
+```
+
 
 
 
