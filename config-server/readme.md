@@ -28,8 +28,8 @@ Make sure your openshift runs (i.e. `sudo ./oc cluster up`
 3. run `oc adm policy add-scc-to-user anyuid -z default`
 4. run `oc login -u developer -p developer`
 5. run `oc new-app --name=config-server -e PORT_NO=8888 -e PROFILE=default -e EUREKA_SERVER=http://discovery-server-1-ktrt7-myproject.192.168.1.63.nip.io/eureka -e GIT_REPO=https://github.com/drtran/scf-config-repository.git drtran/config-server`
-6. run `oc logs -f pods/discovery-server-x-xxxxx`
-7. run `oc expose --name config-server --port 8888 pods config-server-x-xxxxx`
+6. run `oc logs -f pods/config-server-x-xxxxx`
+7. run `oc expose --name=config-server --port 8888 pods config-server-x-xxxxx`
 8. run `oc expose svc config-server`
 9. run `oc describe route config-server | grep "Requested Host"`
 10. run `oc get all -o name` - my result looks like this:

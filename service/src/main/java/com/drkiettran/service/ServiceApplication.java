@@ -23,6 +23,7 @@ public class ServiceApplication {
 
 	@RequestMapping("/")
 	public String message() {
-		return "Hello from instance " + instance + " process id " + ManagementFactory.getRuntimeMXBean().getName();
+		return "Hello from instance " + instance + " process id " + ManagementFactory.getRuntimeMXBean().getName()
+				+ "\n";
 	}
 }

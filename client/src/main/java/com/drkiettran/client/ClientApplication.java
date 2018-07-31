@@ -35,7 +35,7 @@ public class ClientApplication {
 		InstanceInfo instanceInfo = client.getNextServerFromEureka("service", false);
 		String baseUrl = instanceInfo.getHomePageUrl();
 		ResponseEntity<String> response = restTemplate.exchange(baseUrl, HttpMethod.GET, null, String.class);
-		return response.getBody();
+		return response.getBody() + "\n";
 
 	}
 }

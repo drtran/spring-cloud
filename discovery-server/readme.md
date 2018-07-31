@@ -45,6 +45,15 @@ The following steps build the discovery-server executable, build a docker image,
 4. run `sudo docker tag discovery-server:latest drtran/discovery-server:latest`
 5. run `sudo docker push drtran/discovery-server:latest`
 
+### Alternatively
+
+You can also use this command to build the docker image for this discovery service:
+
+```
+./mvnw -Ddocker.image.prefix=drtran clean install dockerfile:build
+./mvnw -Ddocker.image.prefix=drtran clean install dockerfile:push
+```
+
 ## Openshift Launch
 
 Make sure your openshift is running (i.e. `sudo ./oc cluster up --public-hostname=192.168.1.63`. Change hostname to match yours.
