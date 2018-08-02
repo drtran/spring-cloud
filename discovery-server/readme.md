@@ -54,30 +54,47 @@ You can also use this command to build the docker image for this discovery servi
 ./mvnw -Ddocker.image.prefix=drtran clean install dockerfile:push
 ```
 
-## Openshift Launch
+## Openshift
 
-Make sure your openshift is running (i.e. `sudo ./oc cluster up --public-hostname=192.168.1.63`. Change hostname to match yours.
+I installed and ran Openshift Origin. You can visit this website for more information on how to stand one up: [https://www.openshift.org] 
 
-1. run `oc login -u system:admin`
-2. run `oc import-image drtran/discovery-server --from drtran/discovery-image --insecure --confirm=true --all=true`
-3. run `oc adm policy add-scc-to-user anyuid -z default`
-4. run `oc login -u developer -p developer`
-5. run `oc new-app --name=discovery-server -e PORT_NO=8761 -e PROFILE=prod drtran/discovery-server`
-6. run `oc logs -f pods/discovery-server-x-xxxxx`
-7. run `oc expose --port 8761 pods discovery-server-x-xxxxx`
-8. run `oc expose svc discovery-server-x-xxxxx`
-9. run `oc describe route discovery-server-x-xxxxx`
-10. run `oc get all -o name` - my result looks like this:
+### Openshift status
 
+Check the status of your openshift instance:
+
+``` 
+oc status 
 ```
 
-deploymentconfigs/discovery-server
-imagestreams/discovery-server
-routes/discovery-server-1-8pfk4
-pods/discovery-server-1-8pfk4
-replicationcontrollers/discovery-server-1
-services/discovery-server-1-8pfk4
+If it is not running, you can start it using this command: 
 
+```
+./oc cluster up --public-hostname=ip-address
+```
+
+### Import Docker Image
+
+Run this command:
+
+```
+./oc_import_image.sh
+```
+
+### Create Instance
+
+Run this command:
+
+```
+./oc_create_app_and_expose_svc.sh
+```
+Note the printed hostname that you can use to visit the Spring Eureka server.
+
+### Delete the instance
+
+Run this command:
+
+```
+./oc_delete_app_and_resources.sh
 ```
 
 ## Swagger UI
