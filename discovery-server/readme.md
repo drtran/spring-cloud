@@ -1,6 +1,112 @@
-# An exercise project 
+# Netflix Eureka - a Discovery Server
 
-## Creating and running a sprint framework netflix eureka server
+A service discovery server allows services to publish their service endpoints to others via unique service names. The discovery server also allows services or applications to search for other service endpoint, also based on their unique service names. The registration and discovery services are vital to the success of each and every services that were developed in and outside of an enterprise. 
+
+This of this service as a well-known port in the traditional TCP/IP programming in concept.
+
+## Essential commands
+
+To use this project effectively, consider using the following scripts:
+
+### Run locally using Maven:
+
+```
+./mvwn clean spring-boot:run
+```
+
+You can visit the website at http://localhost:8761.
+
+### Build & publish a Docker image
+
+#### Requirements:
+
+- Must have a Docker engine running
+- Must have an account with the Docker Hub (if not, sign up for one - it's free)
+
+These commands builds a container
+
+```
+./mvnw -Ddocker.image.prefix=drtran clean install dockerfile:build
+./mvnw -Ddocker.image.prefix=drtran clean install dockerfile:push
+```
+
+### Run a Docker container
+
+```
+docker run -e PORT_NO=8761 -e PROFILE=prod -it -p 8761:8761 discovery-server:latest
+```
+You can visit the website at http://localhost:8761.
+
+### Import a Docker image to Openshift
+
+#### Requirements
+- Must have Openshift (RHEL/origin/minishift) installed and running
+
+### Openshift status
+
+Check the status of your openshift instance:
+
+``` 
+oc status 
+```
+
+The output should be something like this:
+
+```
+In project My Project (myproject) on server https://192.168.1.63:8443
+
+You have no services, deployment configs, or build configs.
+Run 'oc new-app' to create an application.
+
+```
+I am using the default 'myproject' project. You can create a new one if needed. Please refer to the [openshift/origin website](http://www.openshift.org)
+
+If the Openshift Origin is not running, you can start it using this command: 
+
+```
+./oc cluster up --public-hostname=ip-address
+```
+
+### Import Docker Image
+
+To create an openshift application, you would need to import the Docker image. Use the following command to achieve that.
+
+```
+./oc_import_image.sh discovery-server
+```
+
+### Create an openshift application
+
+You can create an openshift application using 
+Run this command:
+
+```
+./oc_create_app_and_expose_svc.sh discovery-server 8761 
+```
+Note the printed hostname (url) that you can use to visit the Spring Eureka server.
+
+Visit the website and verify that the Discovery Server is up and running.
+
+### Delete openshift application instance
+
+Run this command:
+
+```
+./oc_delete_app_and_resources.sh discovery-server
+```
+
+### delete docker image from openshift
+
+Run this command to remove the image from openshift:
+
+```
+./oc_delee_image.sh discovery-server
+```
+
+---
+
+# Finer grained document
+
 
 Date: 21 July 2018.
 
@@ -66,7 +172,18 @@ Check the status of your openshift instance:
 oc status 
 ```
 
-If it is not running, you can start it using this command: 
+The output should be something like this:
+
+```
+In project My Project (myproject) on server https://192.168.1.63:8443
+
+You have no services, deployment configs, or build configs.
+Run 'oc new-app' to create an application.
+
+```
+I am using the default 'myproject' project. You can create a new one if needed. Please refer to the [openshift/origin website](http://www.openshift.org)
+
+If the Openshift Origin is not running, you can start it using this command: 
 
 ```
 ./oc cluster up --public-hostname=ip-address

@@ -28,11 +28,13 @@ kubernetes v1.9.1+a0ce1bc657
 
 - Java JDK 1.8
 - Spring STS 3.9.5
+- Spring Boot 2.0.3 (latest as of August 1 2018)
 
 ## Discovery service project
 
 In order to create, run and maintain a microservice efficiently and effectively, some type of service discovery is necessary. This project runs a service discovery server that allows microservices to register their services by names and their potential clients can discover them also by names.
 
+This project is needed by nearly all subsequent projects, including the Spring Cloud Config project, config-server
 
 ## Configuration server project
 
