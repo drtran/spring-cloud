@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController // not recommended - use for demo purpose only
 public class ServiceApplication {
 
+	// Passing in as environment variable (SERVICE_INSTANCE_NAME) [ubuntu]
 	@Value("${service.instance.name}")
 	private String instance;
 

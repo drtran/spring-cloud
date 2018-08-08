@@ -81,7 +81,7 @@ If the Openshift Origin is not running, you can start it using this command:
 To create an openshift application, you would need to import the Docker image. Use the following command to achieve that.
 
 ```
-./oc_import_image.sh discovery-server
+./oc_import_image.sh config-server
 ```
 
 ### Create an openshift application
@@ -110,9 +110,18 @@ Run this command:
 Run this command to remove the image from openshift:
 
 ```
-./oc_delee_image.sh config-server
+./oc_delete_image.sh config-server
 ```
 
+## SWAGGER UI
+
+The URLs for the Swagger-UI:
+
+```
+http://config-server-myproject.192.168..1.63.nip.io/v2/api-docs
+
+```
+ 
 ---
  
 

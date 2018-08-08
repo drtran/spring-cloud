@@ -11,6 +11,6 @@ ENTRYPOINT [ \
 	"-Dspring.profiles.active=${PROFILE}", \
 	"-Dport=${PORT_NO}", \
 	"-Deureka.server=${EUREKA_SERVER}", \
-	"-Dservice.instance.name=${INSTANCE_NAME}", \
+	"-Dservice.instance.name=${SERVICE_INSTANCE_NAME}", \
 	"-jar","/app.jar" \
 ]
