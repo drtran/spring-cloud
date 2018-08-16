@@ -136,6 +136,30 @@ http://service-myproject.192.168.1.63.nip.io/v2/api-docs
 http://service-myproject.192.168.1.63.nip.io/swagger-ui.html
 
 ```
+### create an openshift mysqldb
+
+```
+./oc_create_mysql_instance.sh
+```
+Grant permission to access the instance remotely:
+
+```
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON mysqldb TO 'mysql_user'@'%' IDENTIFIED BY 'password';
+
+mysql -h 172.17.0.8 -u root -p
+mysql -h 172.17.0.8 -u mysql_user -p
+```
+
+Currently, login into the mysql db instance using requested host name of mysqldb-myproject.192.168.1.63.nip.io does not work.
+
+
+### delete an openshift mysqldb 
+
+```
+./oc_delete_mysql_instance.sh
+```
+
 
 ---
 

@@ -100,7 +100,7 @@ Run this command:
 Run this command to remove the image from openshift:
 
 ```
-./oc_delee_image.sh discovery-server
+./oc_delete_image.sh discovery-server
 ```
 
 ---

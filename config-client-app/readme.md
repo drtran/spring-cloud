@@ -1,5 +1,34 @@
-# An exercise project 
+# Spring Cloud Config Client app
 
+This application uses configuration services provided by the config-server. See config-server project for more detail on how to run it as a stand-alone, a docker instance, or an Openshift application.
+
+The deployment of the config-server is located at this url `config-server-myproject.192.168.1.63.nip.io`
+
+## Essential commands
+
+To use this project effectively, consider using the following scripts:
+
+### Run locally using Maven:
+
+We need `PORT` and `EUREKA_SERVER` variables defined for this service to run
+
+```
+export PORT=8282
+
+export EUREKA_SERVER=http://discovery-server-myproject.192.168.1.63.nip.io/eureka
+
+./mvnw clean spring-boot:run
+```
+You can visit the following URLs:
+
+```
+http://192.168.1.63:8181
+http://192.168.1.63:8181/v2/api-docs
+http://192.168.1.63:8181/swagger-ui.html
+
+```
+ 
+---
 
 ## Docker Imange Build
 
