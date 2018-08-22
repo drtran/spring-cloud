@@ -29,7 +29,7 @@ echo on
 oc project $1
 
 oc new-app \
-	-f ../db-templates/postgresql-persistent-template.json \
+	-f ../../templates/db/postgresql-persistent-template.json \
 	-p VOLUME_CAPACITY=1Gi \
 	-p POSTGRESQL_USER=$2 \
 	-p POSTGRESQL_PASSWORD=$3 \
