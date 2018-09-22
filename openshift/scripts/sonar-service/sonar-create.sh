@@ -3,7 +3,7 @@
 
 echo "Run as:"
 echo "./sonar_create.sh project-name dburl user-name password"
-echo "ex: ./sonar_create.sh sonar-service jdbc:postgresql://172.17.0.5:5432/sonardb sonar sonar"
+echo "ex: ./sonar-create.sh sonar-service jdbc:postgresql://172.17.0.5:5432/sonardb sonar sonar"
 
 if [ -z "$1" ]
   then echo "ERROR: No project name provided!"; exit
@@ -20,11 +20,6 @@ fi
 if [ -z "$4" ]
   then echo "ERROR: No PASSWORD provided!"; exit
 fi
-
-echo "Login as developer\n"
-
-oc login -u developer -p developer
-echo on
 
 oc project $1
 

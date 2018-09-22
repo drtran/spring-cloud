@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo "Run this command like this:\n"
-echo "./service_delete.sh project service-name"
+echo "./oc-service-delete.sh project service-name"
 
 if [ -z "$1" ]
   then echo "ERROR: No project name provided!"; exit
@@ -11,10 +11,6 @@ if [ -z "$2" ]
   then echo "ERROR: No service name provided!"; exit
 fi
 
-
-echo "Login as developer\n"
-
-oc login -u developer -p developer
 oc project $1
 
 oc delete route $2

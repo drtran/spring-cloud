@@ -7,9 +7,6 @@ if [ -z "$1" ]
   then echo "ERROR: No project name provided!"; exit
 fi
 
-echo "Login as developer\n"
-
-oc login -u developer -p developer
 oc delete project $1
 
 oc projects

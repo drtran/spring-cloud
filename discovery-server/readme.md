@@ -224,9 +224,12 @@ http://localhost:8761/swagger-ui.html
 ```
 
 
+For Dockerfile:
+Red Hat:
+registry.access.redhat.com/redhat-openjdk-18/openjdk18-openshift
 
-
-
+Docker:
+FROM openjdk:8-jdk-alpine
 
 
 

@@ -3,7 +3,7 @@
 
 echo "Run as:"
 echo "./postgresql_create.sh project-name user-name password database-name"
-echo "ex: ./postgresql_create.sh sonar-service sonar sonar sonardb"
+echo "ex: ./postgresql-create.sh sonar-service sonar sonar sonardb"
 
 if [ -z "$1" ]
   then echo "ERROR: No project name provided!"; exit
@@ -21,9 +21,6 @@ if [ -z "$4" ]
   then echo "ERROR: No DATABASE name provided!"; exit
 fi
 
-echo "Login as developer\n"
-
-oc login -u developer -p developer
 echo on
 
 oc project $1
